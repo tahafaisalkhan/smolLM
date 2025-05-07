@@ -71,19 +71,6 @@ DPO was used to further align the model to human preferences using pairwise rank
 ![asd](https://github.com/user-attachments/assets/3a03fbfd-1e96-4bbd-bbe2-e3067aae9647)
 ![output](https://github.com/user-attachments/assets/9f4831f6-46ba-455f-af9b-67d207aac5a8)
 
-
----
-
-## 📂 Project Structure
-📁 smollm/
-├── layers.py # RMSNorm, SwiGLU, decoder block
-├── attention.py # RoPE and GQA
-├── model.py # SmolModel and SmolLM
-├── train.py # Training loop
-├── lora_finetune.py # LoRA integration
-├── dpo_train.py # Direct Preference Optimization
-
-
 ---
 
 ## 📚 References
