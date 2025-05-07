@@ -18,8 +18,6 @@ SmolLM is a transformer-based language model inspired by LLaMA3. This implementa
 - ⚙️ **SwiGLU Feedforward Networks** ([Shazeer, 2020])
 - 🧠 **Weight Tied Embedding & Projection Head**
 
-> 📚 See the `CS5302_PA2_manual.pdf` for architectural details.
-
 ### 🏋️ Training Stats
 
 | Epoch | Train Loss | Train Perplexity | Val Loss | Val Perplexity |
