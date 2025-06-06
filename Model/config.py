@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 
-# ===================== DO NOT CHANGE THE CONFIG FILE! =====================
-@dataclass 
+@dataclass
 class smolConfig:
     vocab_size = 49152
     hidden_size = 576

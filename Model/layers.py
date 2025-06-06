@@ -21,14 +21,11 @@ class RMSNorm(nn.Module):
         Attributes:
             weight (torch.Parameter): Learnable scaling parameter of shape (hidden_size,).
         """
-        # ===================== DO NOT CHANGE THE INIT FUNCTION! =====================
         super().__init__()
         self.weight = nn.Parameter(torch.ones(hidden_size))  # Learnable scaling factor
         self.variance_epsilon = eps
 
     def forward(self, x):
-        # ===================== DO NOT CHANGE THE FUNCTION ARGUMENTS! =====================
-        # WRITE YOUR CODE HERE
         x_squared = x.pow(2)
         mean_squared = x_squared.mean(dim=-1, keepdim=True)
         mean_squared_eps = mean_squared + self.variance_epsilon
@@ -56,7 +53,6 @@ class MLP(nn.Module):
             down_proj (nn.Linear): Linear layer to project back to `hidden_size`.
             activation (nn.SiLU): SiLU activation function.
         """
-        # ===================== DO NOT CHANGE THE INIT FUNCTION! =====================
         super().__init__()
         self.hidden_size = hidden_size
         self.intermediate_size = intermediate_size
@@ -67,8 +63,6 @@ class MLP(nn.Module):
         self.gate_proj = nn.Linear(self.hidden_size, self.intermediate_size, bias=False)
 
     def forward(self, x):
-        # ===================== DO NOT CHANGE THE FUNCTION ARGUMENTS! =====================
-        # WRITE YOUR CODE HERE
         gate = self.gate_proj(x)
         upProj = self.up_proj(x)
         activated = self.activation(gate)
@@ -76,7 +70,6 @@ class MLP(nn.Module):
 
 class LlamaDecoder(nn.Module):
     def __init__(self, config):
-        # ===================== DO NOT CHANGE THE INIT FUNCTION! =====================
         """
         This is the Llama decoder block.
         """
@@ -92,8 +85,6 @@ class LlamaDecoder(nn.Module):
         self.post_attention_layernorm = RMSNorm(config.hidden_size, eps=1e-05)
 
     def forward(self, x, attention_mask):
-        # ===================== DO NOT CHANGE THE FUNCTION ARGUMENTS! =====================
-        # WRITE YOUR CODE HERE
         x_norm = self.input_layernorm(x)
         attn_output = self.self_attn(x_norm, attention_mask)
         x = x + attn_output

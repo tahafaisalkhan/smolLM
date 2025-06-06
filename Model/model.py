@@ -3,7 +3,6 @@ from layers import LlamaDecoder, RMSNorm
 
 class smolModel(nn.Module):
     def __init__(self, config):
-        # ===================== DO NOT CHANGE THE INIT FUNCTION! =====================
         super().__init__()
         # embedding layer which maps each token to a vector embedding
         self.embed_tokens = nn.Embedding(
@@ -20,8 +19,6 @@ class smolModel(nn.Module):
         self.norm = RMSNorm(config.hidden_size, eps=1e-05)
 
     def forward(self, input_ids=None, attention_mask=None):
-        # ===================== DO NOT CHANGE THE FUNCTION ARGUMENTS! =====================
-        # WRITE YOUR CODE HERE
         x = self.embed_tokens(input_ids)  # => (batch, seq_len, hidden_size)
         for layer in self.layers:
             x = layer(x, attention_mask=attention_mask)
@@ -29,7 +26,6 @@ class smolModel(nn.Module):
         return x
 
 class smolLM(nn.Module):
-    # ===================== DO NOT CHANGE THE INIT FUNCTION! =====================
     """
     This is the Language Model.
     It passes the embeddings from the SmolLM backbone into a LM head.
@@ -45,14 +41,9 @@ class smolLM(nn.Module):
         self.tie_weights()
 
     def tie_weights(self):
-        # ===================== DO NOT CHANGE THE FUNCTION ARGUMENTS! =====================
-        # WRITE YOUR CODE HERE
         self.lm_head.weight = self.model.embed_tokens.weight
 
     def forward(self, input_ids, attention_mask):
-        # ===================== DO NOT CHANGE THE FUNCTION ARGUMENTS! =====================
-        # WRITE YOUR CODE HERE
-
         logits = self.lm_head(self.model(input_ids, attention_mask))
 
         return {'logits': logits}
